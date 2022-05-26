@@ -48,6 +48,11 @@ Steps to build buildroot sdcard image:
    sudo e2label /dev/mmcblk0p5 rootfs
 
 5. cd ~/build-buildroot-4SBCs/rk3328
+   git clone https://github.com/FireflyTeam/kernel.git -b rk3328/firefly
+   mv kernel kernel.git
+   \rm -rf kernel.git/.git
+   make get_kernel
+
    git clone git://git.buildroot.net/buildroot
    cp ./patches/rk3328_defconfig ./buildroot/configs
    \rm -rf ./buildroot/board/roc-rk3328-cc
@@ -55,9 +60,6 @@ Steps to build buildroot sdcard image:
    cd buildroot
    make clean
    make rk3328_defconfig
-   make
-   when error occured after compiling kernel:
-   cp ../patches/Makefile ./output/build/linux-rk3328_firefly/arch/arm64/boot/dts/rockchip/Makefile
    make
 
    The result is in ~/build-buildroot-4SBCs/rk3328/buildroot/output/images/sdcard.img
