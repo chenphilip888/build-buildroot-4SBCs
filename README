@@ -117,3 +117,6 @@ vi /etc/init.d/rcS ( append:
 source /etc/rc.local
 
 reboot
+
+date
+aplay -l
