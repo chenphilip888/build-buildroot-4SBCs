@@ -70,6 +70,11 @@ Steps to build buildroot sdcard image:
    sudo e2label /dev/mmcblk0p5 rootfs
 
 6. cd ~/build-buildroot-4SBCs/tinker
+   git clone https://github.com/TinkerBoard/debian_kernel.git -b release
+   mv debian_kernel debian_kernel.git
+   \rm -rf debian_kernel.git/.git
+   make get_kernel
+
    git clone git://git.buildroot.net/buildroot
    cp ./patches/tinker_defconfig ./buildroot/configs
    \rm -rf ./buildroot/board/asus/tinker
@@ -77,9 +82,6 @@ Steps to build buildroot sdcard image:
    cd buildroot
    make clean
    make tinker_defconfig
-   make
-   when error occured after compiling kernel:
-   cp ../patches/gcc-wrapper.py ./output/build/linux-release/scripts/gcc-wrapper.py
    make
 
    The result is in ~/build-buildroot-4SBCs/tinker/buildroot/output/images/sdcard.img
