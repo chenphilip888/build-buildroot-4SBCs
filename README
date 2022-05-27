@@ -49,11 +49,11 @@ Steps to build buildroot sdcard image:
 
 5. cd ~/build-buildroot-4SBCs/rk3328
    git clone https://github.com/FireflyTeam/kernel.git -b rk3328/firefly
-   mv kernel kernel.git
-   \rm -rf kernel.git/.git
-   make get_kernel
+   cp ./patches/Makefile ./kernel/arch/arm64/boot/dts/rockchip/
 
    git clone git://git.buildroot.net/buildroot
+   vi ./patches/local.mk ( change to your path )
+   cp ./patches/local.mk ./buildroot
    cp ./patches/rk3328_defconfig ./buildroot/configs
    \rm -rf ./buildroot/board/roc-rk3328-cc
    cp -r ./patches/roc-rk3328-cc ./buildroot/board
@@ -71,11 +71,11 @@ Steps to build buildroot sdcard image:
 
 6. cd ~/build-buildroot-4SBCs/tinker
    git clone https://github.com/TinkerBoard/debian_kernel.git -b release
-   mv debian_kernel debian_kernel.git
-   \rm -rf debian_kernel.git/.git
-   make get_kernel
+   cp ./patches/gcc-wrapper.py ./debian_kernel/scripts/
 
    git clone git://git.buildroot.net/buildroot
+   vi ./patches/local.mk ( change to your path )
+   cp ./patches/local.mk ./buildroot
    cp ./patches/tinker_defconfig ./buildroot/configs
    \rm -rf ./buildroot/board/asus/tinker
    cp -r ./patches/tinker ./buildroot/board/asus
@@ -113,7 +113,7 @@ vi /etc/network/interfaces ( delete everything after iface lo inet loopback )
 
 vi /etc/rc.local ( change to:
 #!/bin/sh
-wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf  ( radxa uses wlan1 )
 
 chmod 755 /etc/rc.local
 
