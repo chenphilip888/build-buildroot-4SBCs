@@ -31,5 +31,5 @@ EOF
 $RKBIN/tools/trust_merger trust.ini
 
 install -m 0644 -D trust.img $BINARIES_DIR/trust.img
-install -m 0644 -D $BUILD_DIR/linux-rk3328_firefly/arch/arm64/boot/dts/rk3328-roc-cc.dtb $BINARIES_DIR/rk3328-roc-cc.dtb
+install -m 0644 -D $BUILD_DIR/linux-custom/arch/arm64/boot/dts/rk3328-roc-cc.dtb $BINARIES_DIR/rk3328-roc-cc.dtb
 install -m 0644 -D $BOARD_DIR/extlinux.conf $BINARIES_DIR/extlinux/extlinux.conf
