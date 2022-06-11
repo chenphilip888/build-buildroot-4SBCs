@@ -13,6 +13,7 @@ Steps to build buildroot sdcard image:
    sudo tar xvf gcc-linaro-7.3.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz -C /usr/local/
 
 2. git clone https://github.com/chenphilip888/build-buildroot-4SBCs.git
+   sudo apt-get install build-essential git libssl-dev nmap net-tools libncurses5-dev libncursesw5-dev dnsutils vsftpd ftp binfmt-support qemu-user-static scons libncurses5-dev libncursesw5-dev libdbus-glib-1-dev libbluetooth-dev python-dev python-setuptools python3-dev python3-pip python3-setuptools libcurl4-openssl-dev gettext dbus-x11 chrpath diffstat gawk texinfo curl flex bison device-tree-compiler python swig
 
 3. cd ~/build-buildroot-4SBCs/rpi4b
    git clone git://git.buildroot.net/buildroot
@@ -48,7 +49,7 @@ Steps to build buildroot sdcard image:
    sudo e2label /dev/mmcblk0p5 rootfs
 
 5. cd ~/build-buildroot-4SBCs/rk3328
-   git clone https://github.com/FireflyTeam/kernel.git -b rk3328/firefly
+   git clone https://github.com/FireflyTeam/kernel.git --depth=1 -b rk3328/firefly
    cp ./patches/Makefile ./kernel/arch/arm64/boot/dts/rockchip/
 
    git clone git://git.buildroot.net/buildroot
@@ -70,7 +71,7 @@ Steps to build buildroot sdcard image:
    sudo e2label /dev/mmcblk0p5 rootfs
 
 6. cd ~/build-buildroot-4SBCs/tinker
-   git clone https://github.com/TinkerBoard/debian_kernel.git -b release
+   git clone https://github.com/TinkerBoard/debian_kernel.git --depth=1 -b release
    cp ./patches/gcc-wrapper.py ./debian_kernel/scripts/
 
    git clone git://git.buildroot.net/buildroot
